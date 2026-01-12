@@ -11,23 +11,24 @@
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-        function ProductDetails({ product, price, discountPrice }) {
+        function ProductDetails({ product, price, discountPrice, imageSrc }) {
             const result = !discountPrice ? <p>Price: ${price}</p> : <del><p>Price: ${price}</p></del>
             return (
-                <>
+                <div>
+                    <img src={imageSrc} width="100"/>
                     <p>{product}</p>
                     {result}
                     {discountPrice != null && <p>Discount Price: ${discountPrice}</p>}
                     <button>Add to Cart</button>
-                </>
+                </div>
             );
         }
         function App() {
             return (
                 <>
-                    <ProductDetails product = "Cotton Socks" price = "10.90" discountPrice = '5.45'/>
-                    <ProductDetails product = "Tennis Ball" price = "6.00"/>
-                    <ProductDetails product = "Plain T-Shirt" price = "7.99"/>
+                    <ProductDetails product = "Cotton Socks" price = "10.90" discountPrice = '5.45' imageSrc="cotton-socks.png"/>
+                    <ProductDetails product = "Tennis Ball" price = "6.00" imageSrc="tennis-balls.png"/>
+                    <ProductDetails product = "Plain T-Shirt" price = "7.99" imageSrc="plain-t-shirt.png"/>
                 </>
             );
         }
